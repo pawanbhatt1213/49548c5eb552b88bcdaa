@@ -1,23 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
+import NewsPost from './components/NewsPost';
+import { Navbar } from 'react-bootstrap';
+import RaawView from './components/RaawView';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Router>
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home" className="text-center">
+              <h2 className="text-center">News fangs @ CreateBytes</h2>
+            </Navbar.Brand>
+          </Navbar>
+            <Switch>
+              <Route exact path="/postInfo">
+                <RaawView />
+              </Route>
+              <Route path="/">
+                <NewsPost />
+              </Route>
+            </Switch>
+        </Router>
     </div>
   );
 }
